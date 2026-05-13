@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Nebula Labs | Digital Innovation & Solutions</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* 全局样式重置与定义 */
+        :root {
+            --primary-color: #E3FF04; /* 品牌高光色（来自原站） */
+            --text-dark: #0A0C00;
+            --text-light: #ffffff;
+            --bg-light: #f9f9f9;
+            --border-color: #eaeaea;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: #fff;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: var(--text-dark) !important;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(227, 255, 4, 0.4);
+        }
+        
+        /* 导航栏 */
+        header {
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary-color);
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .nav-menu a {
+            font-weight: 500;
+            position: relative;
+        }
+        
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+        
+        /* 横幅区 */
+        .hero {
+            padding: 120px 0;
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            color: var(--text-light);
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #61D1FE, #FE90C0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+        
+        /* 服务区块 */
+        .services {
+            padding: 100px 0;
+            background-color: var(--bg-light);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            border-top: 3px solid transparent;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-top-color: var(--primary-color);
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        /* 页脚 (包含您的时间地点信息) */
+        footer {
+            padding: 60px 0 20px;
+            background-color: #000;
+            color: var(--text-light);
+            position: relative;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 40px;
+        }
+        
+        .footer-about h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .contact-info {
+            margin-top: 20px;
+        }
+        
+        .contact-info p {
+            margin: 10px 0;
+            font-size: 0.95rem;
+        }
+        
+        /* 版权栏 */
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #888;
+        }
+        
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+            .nav-menu {
+                gap: 20px;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 导航栏 -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">Nebula<span style="color: #666;">.</span></a>
+            <nav class="nav-menu">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Services</a>
+                <a href="#">Portfolio</a>
+                <a href="#">Contact</a>
+            </nav>
+            <a href="#contact" class="btn">Get Started</a>
+        </div>
+    </header>
+
+    <!-- 横幅区 -->
+    <section class="hero">
+        <div class="container">
+            <h1>Crafting Digital Experiences</h1>
+            <p>We are a global team dedicated to solving real-world problems through creative innovation and cutting-edge technology.</p>
+            <a href="#services" class="btn">Explore Our Work</a>
+        </div>
+    </section>
+
+    <!-- 服务区 -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Expertise</h2>
+                <p>We provide comprehensive digital solutions tailored to meet the unique needs of startups and global enterprises.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Mobile Development</h3>
+                    <p>Native iOS and Android applications built with a user-first approach, ensuring seamless performance and engagement.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Web Platforms</h3>
+                    <p>Bespoke web solutions and SaaS platforms designed to drive digital transformation and unique user experiences.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Internet of Things</h3>
+                    <p>Connecting the physical and digital worlds through innovative IoT solutions that enhance efficiency and data collection.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container footer-container">
+            <!-- 关于我们 -->
+            <div class="footer-about">
+                <h3>Nebula Labs</h3>
+                <p style="opacity: 0.7; margin-bottom: 20px;">
+                    Creators and makers of digital magic, with a global mindset and a passion for solving complex challenges.
+                </p>
+                <div class="contact-info">
+                    <!-- 这里插入了您提供的地点信息 -->
+                    <p><strong>📍 Location:</strong> Guilin City, Guangxi Zhuang Autonomous Region, China</p>
+                    <!-- 这里插入了您提供的时间信息 -->
+                    <p><strong>📅 Current Time:</strong> Wednesday, May 13, 2026</p>
+                </div>
+            </div>
+
+            <!-- 快捷链接 1 -->
+            <div>
+                <h4 style="margin-bottom: 20px; font-weight: 600;">Services</h4>
+                <ul>
+                    <li style="margin: 10px 0;"><a href="#">Mobile Apps</a></li>
+                    <li style="margin: 10px 0;"><a href="#">Web Development</a></li>
+                    <li style="margin: 10px 0;"><a href="#">UI/UX Design</a></li>
+                    <li style="margin: 10px 0;"><a href="#">Cloud Solutions</a></li>
+                </ul>
+            </div>
+
+            <!-- 快捷链接 2 -->
+            <div>
+                <h4 style="margin-bottom: 20px; font-weight: 600;">Resources</h4>
+                <ul>
+                    <li style="margin: 10px 0;"><a href="#">Blog</a></li>
+                    <li style="margin: 10px 0;"><a href="#">Case Studies</a></li>
+                    <li style="margin: 10px 0;"><a href="#">Privacy Policy</a></li>
+                    <li style="margin: 10px 0;"><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 版权栏 -->
+        <div class="container copyright">
+            <!-- 动态年份 -->
+            <p>&copy; <span id="year">2026</span> Nebula Labs. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 自动更新页脚年份（虽然您指定了2026，但为了代码健壮性保留逻辑）
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // 模拟滚动效果
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
